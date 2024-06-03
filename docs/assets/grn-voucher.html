@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GRN Voucher</title>
+  <style>
+    /* Add your styles here */
+  </style>
+</head>
+<body>
+  <h1>Goods Received Note (GRN)</h1>
+  <p><strong>GRN Number:</strong> {{grnNumber}}</p>
+  <p><strong>Supplier:</strong> {{supplier}}</p>
+  <p><strong>GRN Date:</strong> {{grnDate}}</p>
+  <p><strong>PO Number:</strong> {{poNumber}}</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Rate</th>
+        <th>GRN Quantity</th>
+        <th>GRN Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{poDetails}}
+    </tbody>
+  </table>
+</body>
+</html>

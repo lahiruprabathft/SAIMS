@@ -4,12 +4,193 @@
   <meta charset="UTF-8">
   <title>Salary Paysheet</title>
   <style>
-    /* Add CSS styles for paysheet here */
+   body{
+      width: 100%;
+margin: 0;
+padding: 0;
+    }
+    table {
+  border-collapse: collapse;
+}
+.Paysheet-container{
+  max-width: 800px; margin: 0 auto;
+}
+table tr, th ,td{
+  border: 1px solid #333;
+  border-collapse: collapse !important;
+}
+table tr td{
+  width: 100%;
+  border-collapse: collapse !;
+  margin: 0;
+  padding: 5px 8px;
+
+}
+td{
+  width: 200px !important;
+  text-align: left !important;
+  padding: 5px 8px;
+
+  
+}
+th{
+  text-align: left;
+  border: 1px solid #333;
+  padding: 5px 8px;
+
+}
+
+.header{
+  margin: 0 auto;
+  text-align: center;
+
+} h1, h2,h3,h4{
+  margin: 0;
+  padding: 0;
+
+}
+h2{
+  font-size: 36px;
+}
+p{
+  text-align: center;
+  font-size: 9px;
+  color: #333333aa;
+}
+h6{
+  text-align: right;
+  font-size: 9px;
+ color: #333333aa;
+}
   </style>
+
+
+
 </head>
 <body>
+  <div class="Paysheet-container">
+
   <div #printContainer>
-  <h1>Salary Paysheet</h1>
+
+<div class="header">
+  
+  <td>         <svg width="200" height="45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50">
+    <!-- Background Rect -->
+    <rect width="100%" height="100%" fill="#3f51b5" rx="0" ry="0" />
+    
+    <!-- Text for SAIMS -->
+    <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">
+      SAIMS
+    </text>
+    
+    <!-- Background for Small subtitle text -->
+    <rect x="50%" y="70%" width="180" height="15" rx="0" ry="10" fill="#fff" transform="translate(-90,0)"/>
+    
+    <!-- Small subtitle text -->
+    <text x="50%" y="85%" dominant-baseline="middle" text-anchor="middle" fill="#222" font-family="Arial, sans-serif" font-size="8">
+      Sales and Inventory Management System
+    </text>
+    
+
+ 
+  </svg>
+
+
+  <h2>Property Name</h2>
+  <h4>Adddress</h4>
+  <h4>Contact</h4>
+  <h4>Email</h4>
+</div>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <td>{{Date}}</td>
+    <th>Month</th>
+    <td>{{Month}}</td>
+  </tr>
+  <tr>
+    <th>Employe ID</th>
+    <td>{{employeeId}}</td>
+    <th>From Date</th>
+    <td>{{fromDate}}</td>
+  </tr>
+  <tr>
+    <th>Employee Name</th>
+    <td>{{employeeId}}</td>
+    <th>To Date</th>
+    <td> {{toDate}}</td>
+  </tr>
+
+
+  <tr>
+    <td colspan="4"> &nbsp; </td>
+  </tr>
+<tr>
+  <th colspan="2">
+    Basic Salary
+  </th>
+  <td colspan="2"> {{totalSalary}}</td>
+  <tr>
+    <th colspan="2">
+    Advance Deductions
+  </td>
+  <td colspan="2"> {{deductions}}</td>
+</tr>
+<tr>
+  <th colspan="2">
+    Gross Salary
+</td>
+  <td colspan="2"> {{netAmount}}</td>
+</tr>
+
+<tr>
+  <td colspan="4">&nbsp; </td>
+</tr>
+<tr>
+  <td colspan="2"></td>
+  <th>Loan Deductions</th>
+  <td>{{loandeductions}}</td>
+</tr>
+<tr>
+  <td colspan="2"></td>
+  <th>Other Deductions:</th>
+  <td>{{otherdeductions}}</td>
+</tr>
+<tr>
+  <td colspan="2"></td>
+  <th>Allowance:</t>
+  <td> {{allowance}}</td>
+</tr>
+<tr>
+  <td colspan="2"></td>
+  <th>Net Salary</th>
+  <td>{{netsalary}}</td>
+</tr>
+<tr>
+  <td colspan="4">
+    <p> 
+   This is System Generated Document, No Signature Required. 
+   <br> <span>
+   Payment Date : {{createdOn}} 
+   </span>  </p>
+   <h6>
+    Developed By SAIMS
+  </h6>
+  </td>
+</tr>
+
+</table>
+
+
+
+
+
+
+
+
+
+  <!-- <h1>Salary Paysheet</h1>
   <p><strong>ID:</strong> {{id}}</p>
   <p><strong>Employee ID:</strong> {{employeeId}}</p>
   <p><strong>From Date:</strong> {{fromDate}}</p>
@@ -23,8 +204,9 @@
   <p><strong>Loan Deductions:</strong> {{loandeductions}}</p>
   <p><strong>Other Deductions:</strong> {{otherdeductions}}</p>
   <p><strong>Allowance:</strong> {{allowance}}</p>
-  <p><strong>Net Salary:</strong> {{netsalary}}</p>
+  <p><strong>Net Salary:</strong> {{netsalary}}</p> -->
 </div>
 
+</div>
 </body>
 </html>

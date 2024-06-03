@@ -1,0 +1,65 @@
+<!-- assets/po-voucher.html -->
+<html>
+<head>
+  <title>Purchase Order Voucher</title>
+  <style>
+    /* Add CSS styles for voucher here */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+    <p>Property Name: {{propertyName}}</p>
+<p>Property Address: {{propertyAddress}}</p>
+
+
+  <h1>Purchase Order Voucher</h1>
+  <p>PO Number: {{poNumber}}</p>
+  <p>PO Date: {{poDate}}</p>
+  <p>Supplier: {{supplier}}</p>
+  <p>Total Value: {{totalPOValue}}</p>
+  <p>Created By: {{createdBy}}</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Unit</th>
+        <th>Quantity</th>
+        <th>Rate</th>
+        <th>Tax</th>
+        <th>Extra Charges</th>
+        <th>Net Amount</th>
+        <th>Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{itemRows}}
+    </tbody>
+  </table>
+</body>
+</html>
+
+
+
+<!-- openPoDetails(po: any): void {
+    this.dialog.open(PoDetailsDialogComponent, {
+      width: '1000px',
+      height: '600px', // Specify the width of the dialog
+      data: {
+        poDetails: [po]
+      }
+    });
+  } -->
+
