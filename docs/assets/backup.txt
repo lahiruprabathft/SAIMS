@@ -1,0 +1,80 @@
+  // Method to set the currently selected item for quantity changes
+  setSelectedItem(item: any) {
+    this.selectedItem = item;
+    console.log("Selected Item in Cart ", this.selectedItem)
+    this.isQtyMode = true;  // Automatically set to quantity mode
+    this.currentInput = item.qty.toString(); // Pre-fill current input with item's quantity
+  }
+
+
+
+  handleQtyChange(event: any) {
+    const { item, newQty } = event;
+    const updatedItem = this.cart.find(cartItem => cartItem.id === item.id);
+    if (updatedItem) {
+      updatedItem.qty = newQty;  // Update the quantity of the item in the cart
+    }
+  }
+  
+  onNumberClick(value: any) {
+    if (value === 'Qty') {
+      this.isQtyMode = true;
+      this.currentInput = ''; // Clear current input when switching to Qty mode
+    } else if (this.isQtyMode) {
+      if (!isNaN(Number(value)) || value === '.') {
+        // Append the new value to current input
+        this.currentInput += value.toString(); // Keep existing input and add the new value
+        console.log(`Current Input: ${this.currentInput}`); // Debugging log
+      }
+  
+      // Automatically apply quantity only if a valid number is formed
+      if (this.currentInput !== '' && !isNaN(Number(this.currentInput))) {
+        this.applyQtyToSelectedItem(); // Automatically apply the new quantity
+      }
+    } else {
+      // Handle other cases like discount, price, etc.
+    }
+  }
+  
+  applyQtyToSelectedItem() {
+    if (this.isQtyMode && this.selectedItem) {
+      const newQty = parseFloat(this.currentInput);  // Convert current input to number
+      if (!isNaN(newQty)) {
+        this.selectedItem.qty = newQty;  // Update the quantity of the selected item
+        this.handleQtyChange({ item: this.selectedItem, newQty }); // Call the qtyChange handler
+        // Do not reset quantity mode or clear input here
+      }
+    }
+  }
+  
+  
+  onClearClick() {
+    this.currentInput = '0';
+  }
+  
+
+
+
+
+
+
+
+
+    calculateItemPrice(item: any): number {
+    return item.qty * (this.selectedOrderType === 'NC' && item.isNCAllowed ? item.ncValue : item.costing);
+  }
+
+  calculateTotalPrice(): number {
+    return this.cart.reduce((total, item) => total + this.calculateItemPrice(item), 0);
+  }
+
+  calculateTotalTax(): number {
+    return this.cart.reduce((total, item) => total +  ( this.selectedOrderType === 'NC' ? 0 :  item.taxAmount || 0), 0);
+  }
+
+  calculateNetAmount(): number {
+    const totalPrice = this.calculateTotalPrice();
+    const totalTax =  this.selectedOrderType === 'NC' ? 0 : this.calculateTotalTax() ;
+    return totalPrice - this.discountAmount + totalTax;
+  }
+
